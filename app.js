@@ -9,7 +9,9 @@ const searchForPatient = (query, data) => {
     let searchKeyArray = Object.keys(query)
     let searchValueArray = Object.values(query)
     for (let i = 0; i < searchKeyArray.length; i++) {
-        searchResultsArray = searchResultsArray.filter(object => object[searchKeyArray[i]] == searchValueArray[i])
+        if (searchValueArray[i]) {
+            searchResultsArray = searchResultsArray.filter(object => object[searchKeyArray[i]] == searchValueArray[i])
+        }
     }
     switch(searchResultsArray.length) {
         case 0:
