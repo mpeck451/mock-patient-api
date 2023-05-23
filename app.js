@@ -62,7 +62,7 @@ const generateNewPatientData = (newData, primaryKey, originalData={}) => {
         roomExt: newData['roomExt'] ? newData['roomExt'] : originalData.roomExt,
         nurseExt: newData['nurseExt'] ? newData['nurseExt'] : originalData.nurseExt,
         mrn: newData['mrn'] ? newData['mrn'] : originalData.mrn,
-        facility: newData['facility'] ? newData['facility'] : originalFData.facility,
+        facility: newData['facility'] ? newData['facility'] : originalData.facility,
         admitDate: newData['admitDate'] ? newData['admitDate'] : originalData.admitDate,
         dischargeDate: newData['dischargeDate'] ? newData['dischargeDate'] : originalData.dischargeDate,
         deceased: newData['deceased'] ? newData['deceased'] : originalData.deceased,
