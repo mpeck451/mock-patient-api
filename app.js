@@ -51,23 +51,27 @@ const generatePrimaryKey = (data) => {
 }
 
 const generateNewPatientData = (newData, primaryKey, originalData={}) => {
+    const generatePropertyValue = (convertDataType, propertyName) => {
+        let propertyValue = newData[propertyName] ? newData[propertyName] : originalData[propertyName]
+        return propertyValue ? convertDataType(propertyValue) : ""
+    }
     return {
         primaryKey: primaryKey,
-        lastName: newData['lastName'] ? newData['lastName']: originalData.lastName,
-        firstName: newData['firstName'] ? newData['firstName']: originalData.firstName,
-        dob: newData['dob'] ? newData['dob'] : originalData.dob,
-        nurseUnit: newData['nurseUnit'] ?  newData['nurseUnit'] : originalData.nurseUnit,
-        room: newData['room'] ? newData['room'] : originalData.room,
-        bed: newData['bed'] ? newData['bed'] : originalData.bed,
-        roomExt: newData['roomExt'] ? newData['roomExt'] : originalData.roomExt,
-        nurseExt: newData['nurseExt'] ? newData['nurseExt'] : originalData.nurseExt,
-        mrn: newData['mrn'] ? newData['mrn'] : originalData.mrn,
-        facility: newData['facility'] ? newData['facility'] : originalData.facility,
-        admitDate: newData['admitDate'] ? newData['admitDate'] : originalData.admitDate,
-        dischargeDate: newData['dischargeDate'] ? newData['dischargeDate'] : originalData.dischargeDate,
-        deceased: newData['deceased'] ? newData['deceased'] : originalData.deceased,
-        privacy: newData['privacy'] ? newData['privacy'] : originalData.privacy,
-        sex: newData['sex'] ? newData['sex'] : originalData.sex
+        lastName: generatePropertyValue(String, 'lastName'),
+        firstName: generatePropertyValue(String, 'firstName'),
+        dob: generatePropertyValue(String, 'dob'),
+        nurseUnit: generatePropertyValue(Number, 'nurseUnit'),
+        room: generatePropertyValue(Number, 'room'),
+        bed: generatePropertyValue(Number, 'bed'),
+        roomExt: generatePropertyValue(Number, 'roomExt'),
+        nurseExt: generatePropertyValue(Number, 'nurseExt'),
+        mrn: generatePropertyValue(Number, 'mrn'),
+        facility: generatePropertyValue(String, 'facility'),
+        admitDate: generatePropertyValue(String, 'admitDate'),
+        dischargeDate: generatePropertyValue(String, 'dischargeDate'),
+        deceased: generatePropertyValue(String, 'deceased'),
+        privacy: generatePropertyValue(String, 'privacy'),
+        sex: generatePropertyValue(String, 'sex')
       } 
 }
 
