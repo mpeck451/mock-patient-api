@@ -88,6 +88,18 @@ app.get('/api/v1.0.0-alpha/patients', (req, res, next) => {
     }
 })
 
+app.get('/api/v1.0.0-alpha/patients/:id', (req, res, next) => {
+    api.log(req.query, req.method)
+    let currentData = getPatientData(patientDataFilePath)
+    let patientFound = searchForPatient({primaryKey: req.params.id}, currentData)
+    if (patientFound) {
+        res.status(200).send(patientFound)
+    }
+    else {
+        res.status(404).send("Patient not found")
+    }
+})
+
 app.post('/api/v1.0.0-alpha/patients', (req, res, next) => {
     api.log(req.query, req.method)
     let currentData = getPatientData(patientDataFilePath)
